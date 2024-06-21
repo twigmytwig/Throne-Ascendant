@@ -18,9 +18,10 @@ let isNew = ref(true);
 const player = ref<Player | null>(null);
 const playerName = ref("")
 
-const handlePlayerCreated = (newPlayerName: string) => {
-  //isNew.value = false;
-  playerName.value = newPlayerName;
+const handlePlayerCreated = (newPlayer: Player) => {
+  isNew.value = false;
+  player.value = newPlayer;
+  playerName.value = player.value.name;
 }
 
 </script>

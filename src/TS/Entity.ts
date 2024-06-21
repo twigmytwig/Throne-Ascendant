@@ -2,10 +2,8 @@
 export class Entity{
     name: string;
     hasBentKnee: boolean;
-    treasury: number;
-    constructor(name: string, hasBentKnee: boolean, treasury: number){
+    constructor(name: string, hasBentKnee: boolean){
         this.name = name;
         this.hasBentKnee = hasBentKnee;
-        this.treasury = treasury
     }
 }

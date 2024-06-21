@@ -1,10 +1,12 @@
 //This should extend the entity.ts i think
-export class Player{
-    name: string;
-    hasBentKnee: boolean;
+import { Entity } from "./Entity"
 
-    constructor(name: string, hasBentKnee: boolean){
-        this.name = name;
-        this.hasBentKnee = hasBentKnee;
+export class Player extends Entity{
+    treasury: number;
+    soldiers: number;
+    constructor(name: string, hasBentKnee: boolean, treasury: number, soldiers: number){
+        super(name,hasBentKnee);
+        this.treasury = treasury;
+        this.soldiers = soldiers;
     }
 }

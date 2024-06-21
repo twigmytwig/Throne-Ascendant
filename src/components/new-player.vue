@@ -10,7 +10,14 @@
         <br/>
         <button @click="confirmAllegiance(true)">Bend the knee and submit to taxation</button>
         <button @click="confirmAllegiance(false)">Refuse to accept the new king</button>
-        <button>Ask tribal council members</button>
+        <button v-if="!displayAdviceMsg" @click="displayAdvice()">Ask tribal council members</button>
+    </div>
+    <div v-if="displayAdviceMsg">
+        <p>Your master of coin heeds you to bend the knee. "While the taxation will be harsh on our treasury, surely it cannot be worse than the cost of the lives of good men. 
+            We have 10,000 doubloons currently and the tax rate is set to 400DB a month."</p>
+        <p>Your master of war heeds you against bending the knee. "This taxation is a disgrace! If this 'king' wants to take our resources then he will have to pay for it in blood. 
+            We have 50 trained soilders ready to fend off any attack from the crown!"</p>
+        <p>Your second in command has no opinion on the matter. "Each choice has its folleys. Choose the option that leads to us surviving."</p>
     </div>
     <div v-if="setAllegiance">
         <div v-if="hasBentKnee">
@@ -19,6 +26,9 @@
         <div v-else>
             You have refused to bend the knee to the new king. You are free of his taxes but not of his wrath...
         </div>
+    </div>
+    <div v-if="setAllegiance">
+        <button @click="startGame()">Begin Journey</button>
     </div>
 </template>
 
@@ -30,10 +40,10 @@ const tribeName = ref("")
 const hasName = ref(false)
 const setAllegiance = ref(false)
 const hasBentKnee = ref(false);
+const displayAdviceMsg = ref(false);
 
 function confirmName() {
     hasName.value = true;
-    emit('response', tribeName.value)
 }
 
 function confirmAllegiance(bentKnee: boolean){
@@ -42,5 +52,14 @@ function confirmAllegiance(bentKnee: boolean){
     }
     setAllegiance.value = true;
     
+}
+
+function displayAdvice(){
+    displayAdviceMsg.value = true;
+}
+
+function startGame(){
+    const newPlayer = new Player(tribeName.value,hasBentKnee.value,10000,50);
+    emit('response', newPlayer)
 }
 </script>
