@@ -1,0 +1,46 @@
+<template>
+    <label>You awake to the pounding of drums and a note stating your tribal councel is awaiting your arrival for an urgent meeting...</label>
+    <br/>
+    <div v-if="!hasName">
+        <input  placeholder="Tribe Name Here" v-model="tribeName" type="text"/>
+        <button @click="confirmName">Confirm Tribe Name</button>
+    </div>
+    <div v-if="hasName && !setAllegiance">
+        <p>A council member informs you that the king is demanding a tax from all tribes, keeps, and great houses in the realm. "Should we bend the knee to the new king and submit to this taxation or refuse to serve?"</p>
+        <br/>
+        <button @click="confirmAllegiance(true)">Bend the knee and submit to taxation</button>
+        <button @click="confirmAllegiance(false)">Refuse to accept the new king</button>
+        <button>Ask tribal council members</button>
+    </div>
+    <div v-if="setAllegiance">
+        <div v-if="hasBentKnee">
+            <p>You have bent the knee to the new king.</p>
+        </div>
+        <div v-else>
+            You have refused to bend the knee to the new king. You are free of his taxes but not of his wrath...
+        </div>
+    </div>
+</template>
+
+<script setup lang="ts">
+import { Player } from '@/TS/player'
+import { ref } from 'vue'
+const emit = defineEmits(['response'])
+const tribeName = ref("")
+const hasName = ref(false)
+const setAllegiance = ref(false)
+const hasBentKnee = ref(false);
+
+function confirmName() {
+    hasName.value = true;
+    emit('response', tribeName.value)
+}
+
+function confirmAllegiance(bentKnee: boolean){
+    if(bentKnee){
+        hasBentKnee.value = true;
+    }
+    setAllegiance.value = true;
+    
+}
+</script>
