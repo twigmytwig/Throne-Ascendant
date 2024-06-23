@@ -1,5 +1,5 @@
 <template>
-  <!--YEs I am aware this is dumb. It was throwing a stupid error about 
+  <!--YEs I am aware this is v-if is dumb. It was throwing a stupid error about 
   player potentially being null and i didnt feel like fixing it so this is my temp solution-->
   <div v-if="player">
     <Header style="float:left; padding-right: 10px;" :player="player" :time="time"/>
