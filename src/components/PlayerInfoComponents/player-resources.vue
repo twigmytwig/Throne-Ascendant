@@ -1,12 +1,14 @@
 <template>
     <div class="playerInfoBox">
-        <p>Food: {{ player?.food }}</p>
-        <p>Weapons: {{ player?.weapons }}</p>
+        <li v-for="r in player.resources">
+            {{ r.name }}: {{ r.amount }}
+        </li>
     </div>
 </template>
 
 <script setup lang="ts">
 import { Player } from '@/TS/player';
+import { Resource } from '@/TS/Resources';
 
 const props = defineProps({
     player: Player,
@@ -15,7 +17,6 @@ const props = defineProps({
 
 <style>
 .playerInfoBox{
-    padding: 5px;
     border-style: solid;
     width: 200px;
 }
