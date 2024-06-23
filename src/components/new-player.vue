@@ -35,6 +35,8 @@
 <script setup lang="ts">
 import { Player } from '@/TS/player'
 import { ref } from 'vue'
+import { Worker } from '@/TS/Workers';
+import { ProfessionInitData } from '@/TS/DataInitialization/ProfessionInit';
 const emit = defineEmits(['response'])
 const tribeName = ref("")
 const hasName = ref(false)
@@ -59,7 +61,12 @@ function displayAdvice(){
 }
 
 function startGame(){
-    const newPlayer = new Player(tribeName.value,hasBentKnee.value,"Tribe",1000,10,2,0,1,0,0);
+    const profInit = new ProfessionInitData();
+    const workersList: Worker[] = [
+        new Worker(profInit.professions[0]),
+        new Worker(profInit.professions[1]),
+    ];
+    const newPlayer = new Player(tribeName.value,hasBentKnee.value,"Tribe",1000,10,2,0,1,0,0, workersList);
     emit('response', newPlayer)
 }
 </script>

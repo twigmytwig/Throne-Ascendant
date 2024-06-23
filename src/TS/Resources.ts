@@ -1,5 +1,5 @@
 //this is the object of what a resource is. these objects need to be initialized on game load
-export class Profession{
+export class Resource{
     name: string;
     id: number;
     amount: number;
