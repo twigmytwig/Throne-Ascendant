@@ -1,9 +1,7 @@
 <template>
     <div class="playerInfoBox">
-        <p>Soldiers: {{ player?.soldiers }}</p>
-        <p>Workers: {{ player?.workers }}</p>
-        <p>Hunters: {{ player?.hunters }}</p>
-        <p>Unemployed: {{ player?.nonCommittedPersonnel }}</p>
+        <p>Food: {{ player?.food }}</p>
+        <p>Weapons: {{ player?.weapons }}</p>
     </div>
 </template>
 

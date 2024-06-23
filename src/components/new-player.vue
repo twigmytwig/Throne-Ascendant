@@ -59,7 +59,7 @@ function displayAdvice(){
 }
 
 function startGame(){
-    const newPlayer = new Player(tribeName.value,hasBentKnee.value,"Tribe",1000,10,2,0);
+    const newPlayer = new Player(tribeName.value,hasBentKnee.value,"Tribe",1000,10,2,0,1,0,0);
     emit('response', newPlayer)
 }
 </script>

@@ -26,9 +26,9 @@
 
 import Header from "./components/StaticPageComponents/header-bar.vue";
 import NewPlayer from "./components/new-player.vue";
-import PlayerInfoBox from "./components/PlayerInfoComponents/player-stats.vue"
 import ActionCard from "./components/RenderComponents/player-action-card.vue"
 import SoldierManager from "./components/PlayerActions/soldier-manager.vue"
+import PlayerInfoBox from "./components/PlayerInfoComponents/player-info-master.vue"
 import { Player } from "./TS/player";
 import { ref } from 'vue';
 import { Time } from './TS/Time';
