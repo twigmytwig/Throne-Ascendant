@@ -17,6 +17,9 @@
   <br/>
   <div v-if="player">
     <PlayerInfoBox :player="player"/>
+    <hr/>
+    {{ time.Days }}
+    <ActionCard><SoldierManager :player="player" :time="time" @response="handleSoldiersUpdated"/></ActionCard>
   </div>
 </template>
 
@@ -25,12 +28,14 @@
 import Header from "./components/StaticPageComponents/header-bar.vue";
 import NewPlayer from "./components/new-player.vue";
 import PlayerInfoBox from "./components/PlayerInfoComponents/player-stats.vue"
+import ActionCard from "./components/RenderComponents/player-action-card.vue"
+import SoldierManager from "./components/PlayerActions/soldier-manager.vue"
 import { Player } from "./TS/player";
 import { ref } from 'vue';
 import { Time } from './TS/Time';
 
 let isNew = ref(true);
-const time = ref<Time>({Days: 0});
+const time = ref<Time>(new Time(0));
 const isTimerOn = ref(false);
 const player = ref<Player | null>(null);
 const playerName = ref("");
@@ -40,6 +45,10 @@ const handlePlayerCreated = (newPlayer: Player) => {
   isNew.value = false;
   player.value = newPlayer;
   playerName.value = player.value.name;
+}
+
+const handleSoldiersUpdated = (soldiers: number) => {
+
 }
 
 function incrementDays(){
