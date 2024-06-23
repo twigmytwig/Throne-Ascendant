@@ -18,7 +18,7 @@
   <div v-if="player">
     <PlayerInfoBox :player="player"/>
     <hr/>
-    <ActionCard><SoldierManager :player="player" :time="time" @response="handleSoldiersUpdated"/></ActionCard>
+    <ActionCard><SoldierManager :player="player" :time="time"/></ActionCard>
   </div>
 </template>
 
@@ -45,11 +45,6 @@ const handlePlayerCreated = (newPlayer: Player) => {
   player.value = newPlayer;
   playerName.value = player.value.name;
 }
-
-const handleSoldiersUpdated = (soldiers: number) => {
-
-}
-
 function incrementDays(){
   time.value.Days += 1;
 }
