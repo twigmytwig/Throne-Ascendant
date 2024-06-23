@@ -40,10 +40,14 @@ const refTime = toRef(props, 'time');
 watch(refTime, (newTime) => {
     console.log(newTime);
     let tempLen = soldierQueue.value.length;
+    //@ts-ignore these warning are ignored because this method would never be run if these values were null.
     soldierQueue.value = soldierQueue.value.filter(soldier => soldier.endDate > refTime.value.Days);
     let soldiersTrained = tempLen - soldierQueue.value.length;
+    //@ts-ignore
     refPlayer.value.soldiers += soldiersTrained;
 },{deep:true});
+
+
 
 function decommisionSoldier(){
     if(refPlayer.value){
