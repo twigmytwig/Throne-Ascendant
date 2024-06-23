@@ -18,7 +18,6 @@
   <div v-if="player">
     <PlayerInfoBox :player="player"/>
     <hr/>
-    {{ time.Days }}
     <ActionCard><SoldierManager :player="player" :time="time" @response="handleSoldiersUpdated"/></ActionCard>
   </div>
 </template>

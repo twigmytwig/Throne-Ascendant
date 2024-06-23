@@ -4,6 +4,7 @@
     AND THE COMPONENTS THAT WILL DO THOSE ACTIONS-->
     <div>
         <h4>Barracks</h4>
+        <h5>{{ soldierQueue.length }} soldiers in training</h5>
         <hr/>
         <button @click="commisionSoldier()" v-if="player && player.nonCommittedPersonnel > 0">Train Soldier (5 Days)</button>
         <button @click="decommisionSoldier()" v-if="player && player.soldiers > 0">Decommision Soldier</button>
@@ -38,13 +39,10 @@ const refTime = toRef(props, 'time');
 //Watch the time change so we can get all of the ready to ship soldiers into the ranks SIR YES SIR
 watch(refTime, (newTime) => {
     console.log(newTime);
-    soldierQueue.value.forEach((soldier) => {
-        if(refPlayer.value && refTime.value && soldier.endDate <= refTime.value?.Days){
-            refPlayer.value.soldiers += 1;
-            soldierQueue.value.indexOf(soldier);
-            soldierQueue.value.splice(soldierQueue.value.indexOf(soldier), 1)
-        }
-    });
+    let tempLen = soldierQueue.value.length;
+    soldierQueue.value = soldierQueue.value.filter(soldier => soldier.endDate > refTime.value.Days);
+    let soldiersTrained = tempLen - soldierQueue.value.length;
+    refPlayer.value.soldiers += soldiersTrained;
 },{deep:true});
 
 function decommisionSoldier(){
