@@ -16,7 +16,7 @@
   <NewPlayer v-if="isNew" @response="handlePlayerCreated"/>
   <br/>
   <div v-if="player">
-    
+    <PlayerInfoBox :player="player"/>
   </div>
 </template>
 
@@ -24,6 +24,7 @@
 
 import Header from "./components/StaticPageComponents/header-bar.vue";
 import NewPlayer from "./components/new-player.vue";
+import PlayerInfoBox from "./components/PlayerInfoComponents/player-stats.vue"
 import { Player } from "./TS/player";
 import { ref } from 'vue';
 import { Time } from './TS/Time';

@@ -14,9 +14,9 @@
     </div>
     <div v-if="displayAdviceMsg">
         <p>Your master of coin heeds you to bend the knee. "While the taxation will be harsh on our treasury, surely it cannot be worse than the cost of the lives of good men. 
-            We have 10,000 doubloons currently and the tax rate is set to 400DB a month."</p>
+            We have 1,000 doubloons currently and the tax rate is set to 400DB a month."</p>
         <p>Your master of war heeds you against bending the knee. "This taxation is a disgrace! If this 'king' wants to take our resources then he will have to pay for it in blood. 
-            We have 50 trained soilders ready to fend off any attack from the crown!"</p>
+            We have 10 trained soilders ready to fend off any attack from the crown!"</p>
         <p>Your second in command has no opinion on the matter. "Each choice has its folleys. Choose the option that leads to us surviving."</p>
     </div>
     <div v-if="setAllegiance">
@@ -59,7 +59,7 @@ function displayAdvice(){
 }
 
 function startGame(){
-    const newPlayer = new Player(tribeName.value,hasBentKnee.value,"Tribe",10000,50);
+    const newPlayer = new Player(tribeName.value,hasBentKnee.value,"Tribe",1000,10,2,0);
     emit('response', newPlayer)
 }
 </script>
