@@ -1,6 +1,6 @@
 <template>
     <div class="playerInfoBox">
-        <li v-for="r in player.resources">
+        <li v-for="r in player?.resources" :key="r.id">
             {{ r.name }}: {{ r.amount }}
         </li>
     </div>
@@ -8,9 +8,8 @@
 
 <script setup lang="ts">
 import { Player } from '@/TS/player';
-import { Resource } from '@/TS/Resources';
 
-const props = defineProps({
+defineProps({
     player: Player,
 });
 </script>

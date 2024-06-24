@@ -16,9 +16,10 @@
   <NewPlayer v-if="isNew" @response="handlePlayerCreated"/>
   <br/>
   <div v-if="player">
-    <PlayerInfoBox :player="player"/>
+    <PlayerInfoBox @event-log="AddMessageToEventLog" :time="time" :player="player"/>
+    <EventLog :eventlog="eventLog"/>
     <hr/>
-    <ActionCard><SoldierManager :player="player" :time="time"/></ActionCard>
+    <ActionCard><SoldierManager @event-log-emit="AddMessageToEventLog"  :player="player" :time="time"/></ActionCard>
   </div>
 </template>
 
@@ -29,15 +30,18 @@ import NewPlayer from "./components/new-player.vue";
 import ActionCard from "./components/RenderComponents/player-action-card.vue"
 import SoldierManager from "./components/PlayerActions/soldier-manager.vue"
 import PlayerInfoBox from "./components/PlayerInfoComponents/player-info-master.vue"
+import EventLog from "./components/EvenLog/events-log.vue";
 import { Player } from "./TS/player";
 import { ref } from 'vue';
 import { Time } from './TS/Time';
 
-let isNew = ref(true);
+const isNew = ref(true);
 const time = ref<Time>(new Time(0));
 const isTimerOn = ref(false);
 const player = ref<Player | null>(null);
 const playerName = ref("");
+const eventLog = ref<string[]>([]);
+
 let intervalId: number | undefined;
 
 const handlePlayerCreated = (newPlayer: Player) => {
@@ -70,6 +74,10 @@ function toggleTimer(){
       } else {
         startIncrementing();
       }
+}
+
+function AddMessageToEventLog(message: string){
+  eventLog.value.push(message);
 }
 
 </script>

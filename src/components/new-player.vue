@@ -63,8 +63,8 @@ function displayAdvice(){
 function startGame(){
     const profInit = new ProfessionInitData();
     const workersList: Worker[] = [
-        new Worker(profInit.professions[0]),
-        new Worker(profInit.professions[1]),
+        new Worker(profInit.professions[0],profInit.professions[0].productionRateDays), //Since the game starts at day 0, we can add the rate to 0 to find the day it should produce
+        new Worker(profInit.professions[1],profInit.professions[1].productionRateDays),
     ];
     const newPlayer = new Player(tribeName.value,hasBentKnee.value,"Tribe",1000,10,2,0,1,0,0, workersList);
     emit('response', newPlayer)

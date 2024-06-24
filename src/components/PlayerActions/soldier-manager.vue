@@ -25,6 +25,7 @@ class TrainingSoldiers{
     }
 }
 
+const emit = defineEmits(['eventLogEmit']);
 const soldierQueue = ref<TrainingSoldiers[]>([]);
 
 //const emit = defineEmits(['soldierResponse'])
@@ -37,14 +38,16 @@ const refPlayer = toRef(props, 'player');
 const refTime = toRef(props, 'time');
 
 //Watch the time change so we can get all of the ready to ship soldiers into the ranks SIR YES SIR
-watch(refTime, (newTime) => {
-    console.log(newTime);
+watch(refTime, () => {
     let tempLen = soldierQueue.value.length;
     //@ts-ignore these warning are ignored because this method would never be run if these values were null.
     soldierQueue.value = soldierQueue.value.filter(soldier => soldier.endDate > refTime.value.Days);
     let soldiersTrained = tempLen - soldierQueue.value.length;
     //@ts-ignore
-    refPlayer.value.soldiers += soldiersTrained;
+    if(soldiersTrained > 0){
+        refPlayer.value.soldiers += soldiersTrained;
+        emit('eventLogEmit', `${soldiersTrained} soldiers trained.`)
+    }
 },{deep:true});
 
 

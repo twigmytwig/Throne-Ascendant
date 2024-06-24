@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <PlayerStatBox :player="player"/>
+        <PlayerStatBox @event-log-emit="AddToEventLog" :time="time" :player="player"/>
         <PlayerResourceInfoBox :player="player"/>
     </div>
 </template>
@@ -10,10 +10,20 @@
 import PlayerStatBox from "./player-stats.vue"
 import PlayerResourceInfoBox from "./player-resources.vue"
 import { Player } from '@/TS/player';
+import { Time } from "@/TS/Time";
+import { toRef } from "vue";
+
+const emit = defineEmits(['eventLog'])
 
 const props = defineProps({
     player: Player,
+    time: Time
 });
+const refTime = toRef(props, 'time');
+
+function AddToEventLog(message:string){
+    emit("eventLog",message)
+}
 </script>
 
 <style scoped>
