@@ -17,8 +17,9 @@
   <br/>
   <div v-if="player">
     <PlayerInfoBox @event-log="AddMessageToEventLog" :time="time" :player="player"/>
-    <EventLog :eventlog="eventLog"/>
-    <hr/>
+    <EventLog style="float:left;" :eventlog="eventLog"/>
+    <Market  @event-log-emit="AddMessageToEventLog" :player="player"/>
+    <hr style="clear: both;"/>
     <ActionCard><SoldierManager @event-log-emit="AddMessageToEventLog"  :player="player" :time="time"/></ActionCard>
     <ActionCard style="width:25%"><WorkerManager @event-log-emit="AddMessageToEventLog" :player="player"/></ActionCard>
   </div>
@@ -33,6 +34,7 @@ import SoldierManager from "./components/PlayerActions/soldier-manager.vue"
 import PlayerInfoBox from "./components/PlayerInfoComponents/player-info-master.vue"
 import EventLog from "./components/EvenLog/events-log.vue";
 import WorkerManager from "./components/PlayerActions/worker-manager.vue";
+import Market from "./components/PlayerActions/Market/item-market.vue";
 import { Player } from "./TS/player";
 import { ref } from 'vue';
 import { Time } from './TS/Time';
