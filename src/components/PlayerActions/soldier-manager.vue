@@ -3,7 +3,8 @@
     NFORMATION ABOUT SOLDIERS. TRAINING THEM, DECOMMISIONING THEM 
     AND THE COMPONENTS THAT WILL DO THOSE ACTIONS-->
     <div>
-        <h4>Barracks</h4>
+        <h2>Barracks</h2>
+        <hr/>
         <h5>{{ soldierQueue.length }} soldiers in training</h5>
         <hr/>
         <button @click="commisionSoldier()" v-if="player && player.nonCommittedPersonnel > 0">Train Soldier (5 Days)</button>
@@ -45,6 +46,7 @@ watch(refTime, () => {
     let soldiersTrained = tempLen - soldierQueue.value.length;
     //@ts-ignore
     if(soldiersTrained > 0){
+        //@ts-ignore
         refPlayer.value.soldiers += soldiersTrained;
         emit('eventLogEmit', `${soldiersTrained} soldiers trained.`)
     }

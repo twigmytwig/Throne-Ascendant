@@ -30,6 +30,11 @@ const refPlayer = toRef(props, 'player');
 const refTime = toRef(props, 'time');
 const professionCountsRef = ref<Map<string, number>>(new Map());
 
+//I want to only watch the workers list. Save some computational power and runtime  :)
+//@ts-ignore //TODO: probably should find better ways to deal with these possible null values
+watch(refPlayer.value.workersList,  ()=> {
+    updateProfessionCounts();
+},{deep:true});
 //Watch the time change so we can get all of the ready to ship soldiers into the ranks SIR YES SIR
 watch(refTime, () => {
     //1) filter out the workers who arent ready to produce their resource

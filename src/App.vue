@@ -20,6 +20,7 @@
     <EventLog :eventlog="eventLog"/>
     <hr/>
     <ActionCard><SoldierManager @event-log-emit="AddMessageToEventLog"  :player="player" :time="time"/></ActionCard>
+    <ActionCard style="width:50%"><WorkerManager @event-log-emit="AddMessageToEventLog" :player="player"/></ActionCard>
   </div>
 </template>
 
@@ -31,6 +32,7 @@ import ActionCard from "./components/RenderComponents/player-action-card.vue"
 import SoldierManager from "./components/PlayerActions/soldier-manager.vue"
 import PlayerInfoBox from "./components/PlayerInfoComponents/player-info-master.vue"
 import EventLog from "./components/EvenLog/events-log.vue";
+import WorkerManager from "./components/PlayerActions/worker-manager.vue";
 import { Player } from "./TS/player";
 import { ref } from 'vue';
 import { Time } from './TS/Time';
