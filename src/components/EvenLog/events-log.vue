@@ -1,5 +1,7 @@
 <template>
     <div class="log">
+      <h2>Event Log</h2>
+      <hr/>
       <ul>
         <li v-for="message in eventlog" :key="message">
           {{ message }}

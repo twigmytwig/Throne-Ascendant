@@ -20,7 +20,7 @@
     <EventLog :eventlog="eventLog"/>
     <hr/>
     <ActionCard><SoldierManager @event-log-emit="AddMessageToEventLog"  :player="player" :time="time"/></ActionCard>
-    <ActionCard style="width:50%"><WorkerManager @event-log-emit="AddMessageToEventLog" :player="player"/></ActionCard>
+    <ActionCard style="width:25%"><WorkerManager @event-log-emit="AddMessageToEventLog" :player="player"/></ActionCard>
   </div>
 </template>
 

@@ -5,15 +5,15 @@
     <div>
         <h2>Guild Manager</h2>
         <hr/>
-        <HunterManager class="guildItem" @event-log-emit="AddMessageToEventLog" :player="player"/>
+        <HunterManager style="float: right;" class="guildItem" @event-log-emit="AddMessageToEventLog" :player="player"/>
+        <IronsmithManager class="guildItem" @event-log-emit="AddMessageToEventLog" :player="player"/>
     </div>
 </template>
 
 <script setup lang="ts">
 import { Player } from '@/TS/player';
 import HunterManager from './Workers/hunter-manager.vue';
-
-
+import IronsmithManager from './Workers/ironsmith-manager.vue';
 
 const emit = defineEmits(['eventLogEmit']);
 const props = defineProps({

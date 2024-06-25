@@ -1,5 +1,7 @@
 <template>
     <div class="playerInfoBox">
+        <h2>Worker Stats</h2>
+        <hr/>
         <ul>
             <li v-for="(count, profession) in professionCounts" :key="profession">
                 {{ profession }}: {{ count }}

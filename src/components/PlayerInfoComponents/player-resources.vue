@@ -1,5 +1,7 @@
 <template>
     <div class="playerInfoBox">
+        <h2>Resource Stats</h2>
+        <hr/>
         <li v-for="r in player?.resources" :key="r.id">
             {{ r.name }}: {{ r.amount }}
         </li>
