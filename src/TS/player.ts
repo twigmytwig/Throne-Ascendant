@@ -8,22 +8,14 @@ export class Player extends Entity{
     soldiers: number;
     workersList: Worker[];
     resources: Resource[];
-    workers: number;
-    hunters: number;
-    food: number;
-    weapons: number;
     nonCommittedPersonnel: number; //if you remove a soldier they become non-committed personnel until you move them into something
     constructor(name: string, hasBentKnee: boolean, entitySignifier:string, treasury: number, 
-        soldiers: number, workers: number, nonCommittedPersonnel: number, hunters: number,
-        food: number, weapons: number, workersList: Worker[]){
+        soldiers: number, nonCommittedPersonnel: number,
+        workersList: Worker[]){
         super(name,hasBentKnee,entitySignifier);
         this.treasury = treasury;
         this.soldiers = soldiers;
-        this.workers = workers;
         this.nonCommittedPersonnel = nonCommittedPersonnel;
-        this.hunters = hunters;
-        this.food = food;
-        this.weapons = weapons;
         this.workersList = workersList;
         //This may not be the best place to do this but i decided I wanted to
         this.resources =  [
